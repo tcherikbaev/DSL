@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -16,17 +15,17 @@ public class Main {
             }
             try {
                 String operator = expr[0];
-                int oper1 = Integer.parseInt(expr[1]);
-                int oper2 = Integer.parseInt(expr[2]);
+                double oper1 = Double.parseDouble(expr[1]);
+                double oper2 = Double.parseDouble(expr[2]);
 
-                int result = evaluate(operator, oper1, oper2);
+                double result = evaluate(operator, oper1, oper2);
                 System.out.println(result);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
     }
-    private static int evaluate(String operator,int oper1,int oper2)
+    private static double evaluate(String operator,double oper1,double oper2)
     {
         switch (operator)
         {
@@ -42,6 +41,10 @@ public class Main {
                     throw  new IllegalArgumentException("Division on zero is not allowed");
                 }
                 return oper1/oper2;
+            case "%":
+                return oper1%oper2;
+            case "^":
+                return Math.pow(oper1,oper2);
             default:
                 throw new UnsupportedOperationException("Unsupported operation: "+ operator);
         }
